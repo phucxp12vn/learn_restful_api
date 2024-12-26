@@ -1,16 +1,6 @@
-const express = require("express");
+const app = require("./config/express");
 
-const app = express();
-app.use(express.json());
+const port = 3000;
+app.listen(port, () => console.log(`server started on port ${port}`))
 
-app.get("/status", (request, response) => {
-  const status = {
-    status: "running",
-  };
-
-  response.send(status);
-});
-
-app.listen(3000, () => {
-  console.log("Server Listening on PORT:", 3000);
-});
+module.exports = app; // don't know why
