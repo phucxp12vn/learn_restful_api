@@ -1,7 +1,6 @@
 const app = require("./config/express");
-require('dotenv-safe').config();
+const { port, env } = require("./config/vars");
 
-const port = process.env.PORT;
-app.listen(port, () => console.log(`server started on port ${port}`))
+app.listen(port, () => console.log(`server started on port ${port} (${env})`))
 
 module.exports = app; // don't know why
