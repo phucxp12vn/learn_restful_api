@@ -1,16 +1,23 @@
-import globals from 'globals'
+import globals from "globals";
+import pluginJs from "@eslint/js";
+import tseslint from "typescript-eslint";
+
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { files: ['**/*.js'], languageOptions: { sourceType: 'commonjs' } },
-  { languageOptions: { globals: globals.browser } },
+  {files: ["**/*.{js,mjs,cjs,ts}"]},
+  {languageOptions: { globals: globals.node }},
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
   {
     rules: {
-      'no-console': 0,
-      'no-underscore-dangle': 0,
-      'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
-      'no-use-before-define': ['error', { variables: false }],
-      'no-multi-str': 0
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          varsIgnorePattern: "^_",
+          argsIgnorePattern: "^_"
+        }
+      ]
     }
   }
-]
+];
