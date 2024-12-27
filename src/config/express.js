@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const router = require('../api/routes');
 
 const app = express()
 
@@ -8,11 +9,6 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(cors())
 
-app.get('/status', (request, response) => {
-  const status = {
-    status: 'running'
-  }
-  response.send(status)
-})
+app.use(router);
 
 module.exports = app
