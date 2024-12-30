@@ -55,6 +55,7 @@ export const update = (req: Request, res: Response): void => {
   }
 
   user.name = name;
+  dummyDataUser[100].name = name;
 
   res.json({ message: 'User updated successfully.', user });
 };

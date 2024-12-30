@@ -20,7 +20,7 @@
     "dotenv": "^16.4.7",
     "dotenv-safe": "^9.1.0",
     "express": "^4.21.2",
-    "express-validation": "^4.1.1",
+    "express-validator": "^7.2.1",
     "joi": "^17.13.3",
     "tsconfig-paths": "^4.2.0"
   },

@@ -1,19 +1,10 @@
-import { Joi } from 'express-validation';
+import { body, param } from 'express-validator';
 
-export default {
-  create: {
-    body: Joi.object({
-      name: Joi.string().required(),
-    }),
-  },
-  update: {
-    body: Joi.object({
-      name: Joi.string().required(),
-    }),
-    params: Joi.object({
-      id: Joi.string()
-        .regex(/^[a-fA-F0-9]{24}$/)
-        .required(),
-    }),
-  },
-};
+export const createUserSchema = [
+  body('name').isString().trim().notEmpty().withMessage('Name is required and must not be empty'),
+];
+
+export const updateUserSchema = [
+  body('name').isString().trim().notEmpty().withMessage('Name is required and must not be empty'),
+  param('id').notEmpty().isInt().withMessage('User ID must be an integer'),
+];

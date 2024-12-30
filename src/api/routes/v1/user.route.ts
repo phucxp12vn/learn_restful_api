@@ -1,8 +1,8 @@
-import express, { RequestHandler } from 'express';
-import { validate } from 'express-validation';
+import express from 'express';
 
 import * as controller from '@/api/controllers/user.controller';
-import userValidation from '@/api/validations/user.validation';
+import { createUserSchema, updateUserSchema } from '@/api/validations/user.validation';
+import validate from '@/api/middlewares/validator';
 
 const router = express.Router();
 
@@ -10,10 +10,10 @@ router.get('/', controller.list);
 
 router.get('/:id', controller.get);
 
-router.post('/', validate(userValidation.create) as unknown as RequestHandler, controller.create);
+router.post('/', validate(createUserSchema), controller.create);
 
 // Update a user's details by ID
-router.put('/:id', validate(userValidation.update) as unknown as RequestHandler, controller.update);
+router.put('/:id', validate(updateUserSchema), controller.update);
 
 // Delete a user by ID
 router.delete('/:id', controller.remove);

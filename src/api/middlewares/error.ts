@@ -1,10 +1,18 @@
 import { Request, Response, NextFunction } from 'express';
-import { ValidationError } from 'express-validation';
+import { env } from '@/config/vars';
 
-export const converter = (err: unknown, _req: Request, res: Response, _next: NextFunction) => {
-  if (err instanceof ValidationError) {
-    res.status((err as ValidationError).statusCode).json(err); //fixme
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const handler = (err: any, _req: Request, res: Response, _next: NextFunction) => {
+  const response = {
+    message: err.message,
+    errors: err.errors,
+    stack: err.stack,
+  };
+
+  if (env !== 'development') {
+    delete response.stack;
   }
 
-  res.status(500).json(err);
+  res.status(500);
+  res.json(response);
 };
