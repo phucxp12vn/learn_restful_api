@@ -1,6 +1,3 @@
-Sure! Here is an updated README.md file with more details on using Express middleware, specifically focusing on CORS and error handling:
-
-Markdown
 # Learn RESTful API
 
 This project is a simple RESTful API built using Node.js, Express, and TypeScript. It includes various tools and libraries to enhance development and maintain code quality.
@@ -30,13 +27,15 @@ This project is a simple RESTful API built using Node.js, Express, and TypeScrip
 - **ts-node**: Learn how to run TypeScript code directly using ts-node.
 - **tsc-alias**: Understand how to set up path aliases in your TypeScript configuration.
 
+### 6. Logging
+- **Winston**: Learn how to set up and configure Winston for logging in your application. Winston is used to log messages to different transports (e.g., files, console).
+- **Morgan**: Understand how to use Morgan for HTTP request logging. Morgan is used to log HTTP requests and integrates with Winston for logging to files and console.
+
 ## Tech Stack
 
 - **Node.js**
 - **Express.js**
 - **TypeScript**
-
-
 
 ## Tools or Library
 - **ESLint**
@@ -46,6 +45,8 @@ This project is a simple RESTful API built using Node.js, Express, and TypeScrip
 - **dotenv**
 - **dotenv-safe**
 - **tsconfig-paths**
+- **Winston**
+- **Morgan**
 
 ## Scripts
 
