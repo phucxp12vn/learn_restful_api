@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import httpStatus from 'http-status-codes';
 
 interface User {
   id: number;
@@ -21,7 +22,7 @@ export const get = (req: Request, res: Response): void => {
   const user = dummyDataUser.find((user) => user.id === +id);
 
   if (!user) {
-    res.status(404).json({ message: 'User not found!' });
+    res.status(httpStatus.NOT_FOUND).json({ message: 'User not found!' });
   }
 
   res.json(user);
@@ -32,7 +33,7 @@ export const create = (req: Request, res: Response): void => {
 
   const isExistedUser = dummyDataUser.find((user) => user.name === name);
   if (isExistedUser) {
-    res.status(400).json({ message: 'User is existed!' });
+    res.status(httpStatus.BAD_REQUEST).json({ message: 'User is existed!' });
   }
 
   const newUser: User = {
@@ -41,7 +42,7 @@ export const create = (req: Request, res: Response): void => {
   };
   dummyDataUser.push(newUser);
 
-  res.status(201).json(newUser);
+  res.status(httpStatus.CREATED).json(newUser);
 };
 
 export const update = (req: Request, res: Response): void => {
@@ -50,7 +51,7 @@ export const update = (req: Request, res: Response): void => {
   const user = dummyDataUser.find((user) => user.id === +req.params.id);
 
   if (!user) {
-    res.status(404).json({ message: 'User not found.' });
+    res.status(httpStatus.NOT_FOUND).json({ message: 'User not found.' });
     return;
   }
 
@@ -62,7 +63,7 @@ export const update = (req: Request, res: Response): void => {
 export const remove = (req: Request, res: Response): void => {
   const userIndex = dummyDataUser.findIndex((user) => user.id === +req.params.id);
   if (userIndex === -1) {
-    res.status(404).json({ message: 'User not found.' });
+    res.status(httpStatus.NOT_FOUND).json({ message: 'User not found.' });
     return;
   }
 

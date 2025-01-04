@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
 import { validationResult, ValidationChain, FieldValidationError } from 'express-validator';
+import httpStatus from 'http-status-codes';
 
 const validateInputs = (validations: ValidationChain[]): RequestHandler => {
   return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -13,7 +14,7 @@ const validateInputs = (validations: ValidationChain[]): RequestHandler => {
         location: (err as FieldValidationError).location,
       }));
 
-      res.status(400).json({
+      res.status(httpStatus.BAD_REQUEST).json({
         message: 'Validation Error',
         errors: formattedErrors,
       });
