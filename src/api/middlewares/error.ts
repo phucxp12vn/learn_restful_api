@@ -13,6 +13,6 @@ export const handler = (err: any, _req: Request, res: Response, _next: NextFunct
     delete response.stack;
   }
 
-  res.status(500);
+  res.status(err.status);
   res.json(response);
 };

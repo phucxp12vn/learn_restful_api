@@ -12,10 +12,8 @@ router.get('/:id', controller.get);
 
 router.post('/', validate(createUserSchema), controller.create);
 
-// Update a user's details by ID
 router.put('/:id', validate(updateUserSchema), controller.update);
 
-// Delete a user by ID
 router.delete('/:id', controller.remove);
 
 export default router;

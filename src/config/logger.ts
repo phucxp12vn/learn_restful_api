@@ -12,15 +12,17 @@ const logger = winston.createLogger({
 });
 
 if (env !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.simple(),
-  }));
+  logger.add(
+    new winston.transports.Console({
+      format: winston.format.simple(),
+    }),
+  );
 }
 
 export const stream = {
   write: (message: string): void => {
     logger.info(message.trim());
-  }
-}
+  },
+};
 
 export default logger;
