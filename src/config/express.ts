@@ -23,6 +23,8 @@ passport.use('jwt', strategies.jwt);
 
 app.use('/v1', routes);
 
+app.use(error.converter);
+
 app.use(error.handler);
 
 export default app;
