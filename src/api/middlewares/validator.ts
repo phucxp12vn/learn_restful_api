@@ -5,7 +5,7 @@ import httpStatus from 'http-status-codes';
 import { ApiError } from '@/api/types/error';
 
 const validateInputs = (validations: ValidationChain[]): RequestHandler => {
-  return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  return async (req: Request, _res: Response, next: NextFunction): Promise<void> => {
     await Promise.all(validations.map((validation) => validation.run(req)));
 
     const errors = validationResult(req);

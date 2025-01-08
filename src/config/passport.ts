@@ -13,7 +13,6 @@ const jwtOptions = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const jwtHandler = (jwtToken: any, done: VerifiedCallback) => {
   try {
-    console.log('jwtToken', jwtToken);
     const user = jwtToken?.username === 'admin' ? { id: 1, username: 'admin' } : null; //fixme
     if (user) return done(null, user);
 

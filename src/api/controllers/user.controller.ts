@@ -12,7 +12,7 @@ const dummyDataUser: User[] = [
   { id: 3, name: 'GHJ' },
 ];
 
-export const list = (req: Request, res: Response): void => {
+export const list = (_req: Request, res: Response): void => {
   res.json(dummyDataUser);
 };
 
